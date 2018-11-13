@@ -1,0 +1,21 @@
+
+
+
+// Variables
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-size-base: 1.25rem;
+
+
+$theme-colors: (
+        "primary": #d41246,
+        "secondary": #94BD10
+);
+
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+
+// Custom CSS here...
+
