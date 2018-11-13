@@ -24,6 +24,11 @@ provider:
 # you can overwrite defaults here
 #  stage: dev
   region: eu-west-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: "ec2:Describe*"
+      Resource:
+      - "*"
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -66,13 +71,13 @@ package:
     - vendor/**
 
 functions:
-  hello:
+  ec2:
     handler: handler.handle
     environment:
-      HANDLER: handler.hello  # This is the service name which will be used (from services.yml)
+      HANDLER: handler.ec2 # This is the service name which will be used (from services.yml)
     events:
       - http:
-          path: hello
+          path: ec2
           method: get
 
 #    The following are a few example events you can configure

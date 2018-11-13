@@ -26,9 +26,9 @@ services:
       - [setFormatter, ['@logging.formatter']]
 
 # Define your own handlers and other services here
-  handler.hello:
+  handler.ec2:
     public: true
-    class: Raines\Serverless\HelloHandler
+    class: Raines\Serverless\Ec2Handler
 
 #  handler.example:
 #    class: Acme\ExampleHandler
