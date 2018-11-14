@@ -20,18 +20,20 @@ service: backend # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
+  region: eu-west-1
 
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ec2:Describe*"
+      Resource: "*"
 #    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
+
 #      Action:
 #        - "s3:PutObject"
 #      Resource:
@@ -55,8 +57,35 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  ec2:
+    handler: handler.getInstances
+    events:
+      - http:
+          path: ec2
+          method: get
+          cors:
+            origin: '*'
+            maxAge: 86400 
+          authorizer:
+            name: authorizer
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            type: request
+  authorizer:
+    handler: authorizer.handler
+
+
+resources:
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.WWW-Authenticate: "'Basic'"
+        ResponseType: UNAUTHORIZED
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+        StatusCode: '401'
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
