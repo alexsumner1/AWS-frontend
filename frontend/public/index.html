@@ -39,15 +39,13 @@
 
 
 <div id="app">
-  <ul>
-    <li v-for="reservation in reservations">
-      <li v-for="instance in reservation.Instances">
-        {{ reservations }} 
-      </li>
-    </li>
-
-
-  </ul>
+    <table class="table" v-for="reservation in reservations">
+        <tr><td colspan="2" style="background: #999">{{reservation.ReservationId}}</td></tr>
+        <tr v-for="instance in reservation.Instances">
+            <td>{{ instance.InstanceId }}</td>
+            <td>{{ instance.InstanceType }}</td>   
+        </tr>
+    </table>
 
 
 </div>
