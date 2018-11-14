@@ -63,9 +63,7 @@ functions:
       - http:
           path: ec2
           method: get
-          cors:
-            origin: '*'
-            maxAge: 86400 
+          cors: true
           authorizer:
             name: authorizer
             resultTtlInSeconds: 0
