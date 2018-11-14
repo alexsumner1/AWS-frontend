@@ -23,14 +23,16 @@
 		"gulp-uglify": "^3.0.1",
 		"jquery": "^3.3.1",
 		"sass": "^1.14.3",
-		"vue": "^2.5.17"
+		"vue": "^2.5.17",
+		"vue-resource": "^1.5.1"
 	},
 	"nekaiko": {
 		"scriptFiles": [
 			"node_modules/jquery/dist/jquery.js",
 			"node_modules/bootstrap/dist/js/bootstrap.js",
-		        "assets/js/main.js",
-		        "node_modules/vue/dist/vue.js"
+			"assets/js/main.js",
+			"node_modules/vue/dist/vue.js",
+			"node_modules/vue-resource/dist/vue-resource.js"
 		],
 		"styleFile": "assets/sass/frontend.scss",
 		"wpThemeName": null

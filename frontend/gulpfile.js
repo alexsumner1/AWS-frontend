@@ -72,6 +72,7 @@ gulp.task('scripts-dev', function() {
 
 
 gulp.task('publish', gulp.parallel('styles','scripts'));
+gulp.task('publish-dev', gulp.parallel('styles-dev','scripts-dev'));
 
 
 function watchFiles() {
