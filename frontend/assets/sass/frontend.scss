@@ -7,8 +7,14 @@ $font-size-base: 1.25rem;
 
 
 $theme-colors: (
-        "primary": #660058,
-        "secondary": #cc00ff
+        "primary": #9b8798,
+        "secondary": #948993,
+        "one": #b7b4e9, 
+        "two": #d1b4e9, 
+        "three": #e9b7b4, 
+        "four": #e9d1b4, 
+        "five": #b4e9b7, 
+        "six": #b4e9d1
 );
 
 
@@ -19,11 +25,4 @@ $theme-colors: (
 
 // Custom CSS here...
 
-
-.panel {
-        height: 15rem;
-        margin: 1rem;
-        background-color: grey;
-        border: 1px black;
-}
 
